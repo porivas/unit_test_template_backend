@@ -7,7 +7,7 @@ public class StoredProcedure {
 	private ArrayList <String> stored_procedures = new ArrayList<String>();
 	
 	public StoredProcedure(){
-		//call and fill list
+		//fill with correct info later
 		this.stored_procedures.add("test");
 		this.stored_procedures.add("test2");
 	}

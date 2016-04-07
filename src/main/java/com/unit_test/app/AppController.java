@@ -12,6 +12,5 @@ public class AppController {
 	public StoredProcedure getProcedures(){
 		StoredProcedure sp = new StoredProcedure();
 		return sp;
-		//return null;
 	}
 }
