@@ -2,58 +2,67 @@ package com.unit_test.app;
 
 import java.io.Serializable;
 
-public class TestModel {
+import com.fasterxml.jackson.annotation.*;
 
-	private String _procName = "";
-	private String _action = "";
-	private String _template = "";
-	private String _generate = "";
+public class TestModel implements Serializable {
+
+	@JsonProperty("proc")
+	private String proc;
+
+	@JsonProperty("action")
+	private String action;
+	
+	@JsonProperty("template")
+	private String template;
+
+	@JsonProperty("generate")
+	private String generate;
 	
 	public TestModel(){
 		//fill with correct info later
-		this._procName = "";
-		this._action = "";
-		this._template = "";
-		this._generate = "";
+		this.proc = "";
+		this.action = "";
+		this.template = "";
+		this.generate = "";
 	}
 
 	public TestModel(String p, String a, String t, String g){
 		//fill with correct info later
-		this._procName = p;
-		this._action = a;
-		this._template = t;
-		this._generate = g;
+		this.proc = p;
+		this.action = a;
+		this.template = t;
+		this.generate = g;
 	}
 
-	public String getProcName(){
-		return _procName;
+	public String getProc(){
+		return proc;
 	}
 
 	public String getAction(){
-		return _action;
+		return action;
 	}
 	
 	public String getTemplate(){
-		return _template;
+		return template;
 	}
 	
 	public String getGenerate(){
-		return _generate;
+		return generate;
 	}	
 
-	public String setProcName(){
-		return this._procName;
+	public void setProc(String p){
+		this.proc = p;
 	}
 
-	public String setAction(){
-		return this._action;
+	public void setAction(String a){
+		this.action = a;
 	}
 	
-	public String setTemplate(){
-		return this._template;
+	public void setTemplate(String t){
+		this.template = t;
 	}
 	
-	public String setGenerate(){
-		return this._generate;
+	public void setGenerate(String g){
+		this.generate = g;
 	}	
 }

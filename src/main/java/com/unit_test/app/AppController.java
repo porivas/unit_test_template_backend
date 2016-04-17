@@ -20,22 +20,52 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.core.*;
+
+import org.springframework.web.bind.annotation.ResponseBody;
+
 @RestController
 public class AppController {
 
  	private HashMap<String, Test> _testStore = new HashMap<String, Test>();
 
 	@CrossOrigin
-	@RequestMapping(method=RequestMethod.GET, value="/storedProcedures")
+	@RequestMapping(value="/storedProcedures", method=RequestMethod.GET)
 	public StoredProcedure getProcedures(){
 		StoredProcedure sp = new StoredProcedure();
 		return sp;
 	}
 
 	@CrossOrigin
-	@RequestMapping(method=RequestMethod.POST, value="/generateTest")
-	@ResponseStatus(value= HttpStatus.OK)
-	public void something(){
+	@RequestMapping(value="/generateTest", method=RequestMethod.POST, consumes="application/json")
+	public @ResponseBody Test getTestForProc(@RequestBody String json){
+	
+		/*
+		bottom 3 lines work!!
+		StringBuilder reponseData = new StringBuilder();
+		reponseData.append(json);
+		return reponseData.toString();*/
+		
+		/* these also work!!
+		Test t = new Test();
+		t.setName("Pablo");
+		return t; */
+
+		ObjectMapper mapper = new ObjectMapper();
+		TestModel t = new TestModel();
+		try {
+	        t = mapper.readValue(json, TestModel.class);
+
+	    } catch (JsonGenerationException e) {
+	        e.printStackTrace();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+
+		Test ret = new Test();
+		ret.setName(t.getProc());
+		return ret;
 
 	}
 }
