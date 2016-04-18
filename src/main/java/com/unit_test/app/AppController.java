@@ -53,9 +53,9 @@ public class AppController {
 		return t; */
 
 		ObjectMapper mapper = new ObjectMapper();
-		TestModel t = new TestModel();
+		TestModel tm = new TestModel();
 		try {
-	        t = mapper.readValue(json, TestModel.class);
+	        tm = mapper.readValue(json, TestModel.class);
 
 	    } catch (JsonGenerationException e) {
 	        e.printStackTrace();
@@ -63,9 +63,9 @@ public class AppController {
 	        e.printStackTrace();
 	    }
 
-		Test ret = new Test();
-		ret.setName(t.getProc());
-		return ret;
+		Test t = new Test();
+		t.setName(tm.getProc());
+		return t;
 
 	}
 }
