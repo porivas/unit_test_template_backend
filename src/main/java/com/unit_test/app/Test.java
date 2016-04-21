@@ -9,9 +9,17 @@ public class Test {
 	private String post;
 	
 	public Test(){
-		this.pre = "-- PRE <PROC>";
-		this.test = "--TEST <PROC>";
-		this.post = "-- POST <PROC>";
+		this.pre = "-- PRE \n" 
+					+"IF OBJECT_ID(N\'tempdb..##<PROC>\') IS NOT NULL\n"
+					+"BEGIN\n"
+					+"	DROP TABLE ##<PROC>\n"
+					+"END\n";
+		this.test = "--TEST>";
+		this.post = "-- POST \n"
+					+"IF OBJECT_ID(N\'tempdb..##<PROC>\') IS NOT NULL \n"
+					+"BEGIN \n"
+					+ "	DROP TABLE ##<PROC> \n"
+					+ "END \n";
 	}
 
 	public Test(String pre, String test, String post){
