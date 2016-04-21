@@ -14,7 +14,7 @@ public class Test {
 					+"BEGIN\n"
 					+"	DROP TABLE ##<PROC>\n"
 					+"END\n";
-		this.test = "--TEST>";
+		this.test = "--TEST";
 		this.post = "-- POST \n"
 					+"IF OBJECT_ID(N\'tempdb..##<PROC>\') IS NOT NULL \n"
 					+"BEGIN \n"
